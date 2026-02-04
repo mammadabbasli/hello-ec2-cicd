@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 🔹 THIS WAS MISSING
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Write SSH key
         run: |
           mkdir -p .ssh
