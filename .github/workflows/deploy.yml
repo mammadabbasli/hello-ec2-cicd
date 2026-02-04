@@ -12,16 +12,16 @@ jobs:
     steps:
       - name: Write SSH key
         run: |
-          mkdir -p $HOME/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > $HOME/.ssh/deploy_key
-          chmod 600 $HOME/.ssh/deploy_key
+          mkdir -p .ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > .ssh/deploy_key
+          chmod 600 .ssh/deploy_key
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key_path: /github/home/.ssh/deploy_key
+          key_path: /github/workspace/.ssh/deploy_key
           script: |
             cd ~/hello-app
             git pull
